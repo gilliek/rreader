@@ -9,6 +9,8 @@ While still being in development, it already boasts all basic features you would
 expect from a RSS feed reader. It is meant to be self-hosted and is fully Ajax.
 The latter means that the web page never needs to be refreshed.
 
+![](screenshots/feed_view.png)
+
 ## TESTING THE APPLICATION
 
 You need Ruby 1.9.3. Ideally, you should use `rvm` to manage your ruby version.
@@ -33,4 +35,10 @@ stage.
 Contributions are welcome. If you intend to contribute more that a simple patch,
 you should register to the official website:
 http://projects.gw-computing.net/projects/rreader
+
+## SCREENSHOTS
+![](screenshots/edit_feed_article.png)
+![](screenshots/new_subscription.png)
+![](screenshots/starred_items/.png)
+
 
