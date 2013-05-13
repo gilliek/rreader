@@ -1,0 +1,5 @@
+<% if @stream_with_error.present? %>
+	$.notify('error', 'error occured while importing OPML')
+<% else %>
+	$.notify('success', 'OPML successfully imported ! Yay !')
+<% end %>

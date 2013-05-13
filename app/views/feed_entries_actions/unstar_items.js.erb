@@ -1,0 +1,12 @@
+var html = "<%= escape_javascript(
+  render('rss_streams/entries', :collection => @entries)) %>"
+$('#entries-box').html(html);
+
+// Auto adapt the size of the entries list container
+$('#entries').css('width', $('#feed_entries_list').width()-20 + 'px');
+$('#entries-box').css('height', $('#feed_entries_list').height()-90 + 'px');
+$('#entries tr td.entry_title').css('width',
+    $('#entries').width()-185 + 'px');
+$('#entries-selector').removeAttr('checked');
+$.toggle_entries_toolbar(false);
+$("#loading").css("visibility", "hidden");

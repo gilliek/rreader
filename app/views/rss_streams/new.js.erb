@@ -1,0 +1,5 @@
+var html = "<%= escape_javascript(
+  render(:partial => 'rss_streams/new')) %>"
+$("#new_subscription").html(html);
+
+$("#new_subscription").dialog("open");

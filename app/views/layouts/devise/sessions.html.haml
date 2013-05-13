@@ -1,0 +1,12 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %title Sign in
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    = stylesheet_link_tag "sessions", :media => "all"
+  %body
+    .container
+      = yield
+    = javascript_include_tag "application"
+    = javascript_include_tag "sessions"

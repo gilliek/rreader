@@ -1,0 +1,5 @@
+$("#new_subscription").dialog("close");
+
+var html = "<%= escape_javascript(
+         render('home/streams', :collection => @streams)) %>"
+$("#streams_list").html(html)
