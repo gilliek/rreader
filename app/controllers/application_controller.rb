@@ -11,7 +11,9 @@ class ApplicationController < ActionController::Base
     end
 
     def check_first_use
-      num_users = User.all.count
-      redirect_to new_user_registration_url if num_users == 0
+      if params[:action] != 'sign_up'
+        num_users = User.all.count
+        redirect_to new_user_registration_url if num_users == 0
+      end
     end
 end
