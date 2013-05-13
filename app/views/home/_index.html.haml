@@ -1,0 +1,30 @@
+/
+  <div id="panel_splitter">
+  <div id="feed_entries_list">
+  <p id="toolbar">
+  <a class="btn" href="#"><i class="icon-repeat"></i> Reload</a>
+  \&amp;nbsp;
+  <a class="btn btn-danger" href="#">
+  <i class="icon-trash icon-large"></i> Delete</a>
+  </p>
+  <div id="entries"></div>
+- if 42 == 24
+  - if @entries.present?
+    - @entries.each do |entry|
+      %h3= h(entry.name)
+      %div
+        %p
+          = link_to "View original article", entry.url
+          %br/
+          %br/
+          - if entry.content.present?
+            = entry.content.html_safe
+          - else
+            = entry.summary.html_safe
+/
+  </div>
+  
+  <div id="preview">
+  Plop
+  </div>
+  </div>

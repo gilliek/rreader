@@ -1,0 +1,8 @@
+var html_content = "<%= escape_javascript(
+         render('home/index', :collection => @entries)) %>"
+
+var html_streams = "<%= escape_javascript(
+         render('home/streams', :collection => @streams)) %>"
+
+$("#content").html(html_content)
+$("#streams_list").html(html_streams)

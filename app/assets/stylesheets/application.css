@@ -1,0 +1,190 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+/*
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require jquery.ui.resizable
+ *= require jquery.ui.selectable
+ *= require jquery.ui.dialog
+ *= require jquery.ui.accordion
+ *= require jquery.ui.tooltip
+ *= require jquery.ui.tabs
+ *= require font-awesome
+ */
+
+body {
+  padding-right: 10px;
+  padding-left: 10px;
+  overflow: hidden;
+}
+
+#header {
+  width: 100%;
+  height: 45px;
+  background-color: #c83025;
+  margin-top: -40px;
+  border-bottom-left-radius: 20px 20px;
+  border-bottom-right-radius: 20px 20px;
+}
+
+#header #logo, #search_form { float: left; margin-left: 20px; }
+#header #logout_button { float: right; margin: 5px 25px 0px 0px; }
+
+#header #logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  padding-top: 10px;
+}
+
+#sidepanel {
+  float: left;
+  width: 250px;
+  height: 800px;
+  /*background-color: #e1e1e1;*/
+}
+
+#content {
+  float: left;
+  /*height: 790px;*/
+  /*width: 1318px;*/
+}
+
+#panel_splitter, #settings {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}
+
+#settings { padding-left: 15px; }
+
+#settings-tabs { width: 100%; margin-top: 15px; }
+
+.vsplitbar {
+  width: 15px;
+  background: #e1e1e1;
+}
+
+#feed_entries_list {
+  float:left;
+  height: 100%;
+  width: 50%;
+  padding-left: 15px;
+}
+
+#feed_entries_list h3, #settings h3 {
+  margin-top: 0px;
+}
+
+#selected-entries-buttons {
+  display: none;
+}
+
+#selected-entries-buttons .btn-group {
+  display: inline;
+}
+
+#preview {
+  float:left;
+  width: 46%;
+  height: 100%;
+  border-left:5px solid gray;
+  overflow: auto;
+  padding: 10px;
+}
+
+#preview h3 {
+  float: left
+  margin-top: 20px;
+  margin-left: 6px;
+}
+
+#preview #preview_content {
+  clear: both;
+}
+
+#preview-icon-box {
+  text-align: center;
+}
+
+#preview-icon-box i {
+  color: gray;
+  font-size: 42px;
+  padding: 42px;
+  border: 6px dashed gray;
+  border-radius: 15px;
+}
+
+#subscribe_button {
+  text-align: center;
+  margin: 15px 10px 10px 10px;
+}
+
+.center { text-align: center; }
+
+#entries-box {
+  overflow: auto;
+}
+
+#entries tr td {
+  padding: 5px 0px 5px 0px;
+}
+#entries tr td.chckbx {
+  width: 30px;
+  padding-left: 6px;
+  text-align: center;
+}
+
+#entries tr td.date {
+  width: 150px;
+  text-align: center;
+}
+
+#entries tr td.title a {
+  color: black;
+}
+
+/* trick to make overflow hidden property work on a <a> into a <td> */
+#entries tr td .outer {
+  position: relative;
+  top: -7px;
+}
+
+#entries tr td .inner {
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 100%;
+}
+/* end of the trick */
+
+.bold { font-weight: bold }
+
+#notification {
+  width: 350px;
+  height: 25px;
+  display: none;
+  position: absolute;
+  padding: 5px;
+  border-bottom-left-radius: 10px 10px;
+  border-bottom-right-radius: 10px 10px;
+  border-bottom: 3px solid #c83025;
+  border-left: 3px solid #c83025;
+  border-right: 3px solid #c83025;
+  font-weight: bold;
+  z-index: 10000;
+}
+
+#notification .close { float: right; }

@@ -1,0 +1,17 @@
+%table
+  %tr
+    %th Title
+    %th Url
+    %th
+    %th
+    %th
+  - @rss_streams.each do |rss_stream|
+    %tr
+      %td= rss_stream.title
+      %td= rss_stream.url
+      %td= link_to 'Show', rss_stream
+      %td= link_to 'Edit', edit_rss_stream_path(rss_stream)
+      %td= link_to 'Destroy', rss_stream, method: :delete, data: { confirm: 'Are you sure?' }
+%ul
+  - @entries.each do |entry|
+    %li= entry.name

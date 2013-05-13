@@ -1,0 +1,29 @@
+%form#entries-form{"data-remote" => "true"}
+  %table#entries
+    - @entries.each do |entry|
+      %tr
+        %td.chckbx
+          = check_box_tag 'items[]', entry.id
+        %td.title
+          .outer
+            .inner
+              = star_icon(entry).html_safe
+              \&nbsp;
+              \#{link_to(entry.name, entry, { :remote => true, :class => read_or_not(entry) })}
+        %td.date
+          %em{:style => "color: gray;"}= pretty_date(entry.published_at)
+:javascript
+  $('form#entries-form input[type="checkbox"]').click(function() {
+      var num_selected = $('form#entries-form input:checked').length;
+      if (num_selected == 1 && !entries_selected) {
+        $('#entries-selector').attr('checked', 'checked');
+        $.toggle_entries_toolbar(false);
+      } else if (num_selected == 0) {
+        $('#entries-selector').removeAttr('checked');
+        $.toggle_entries_toolbar(false);
+      }
+  });
+
+  $('#entries .title .outer .inner a').click(function() {
+    $(this).css('font-weight', 'normal');
+  });

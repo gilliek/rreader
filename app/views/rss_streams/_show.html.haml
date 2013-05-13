@@ -1,0 +1,57 @@
+#panel_splitter
+  #feed_entries_list
+    %h3#stream_title
+      - if @rss_stream.present?
+        = @rss_stream.title
+      - elsif params[:action] == 'starred'
+        Starred items
+      - else
+        All items
+    %p#toolbar
+    .btn-group.open{:style => "display: inline;"}
+      %a.btn{:href => "#", :style => "backgound-color:red;"}
+        %input#entries-selector{:type => "checkbox"}/
+      %a#toggle-link.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %span.icon-caret-down
+      %ul.dropdown-menu
+        %li
+          %a{:href => "#"} All
+        %li
+          %a{:href => "#"} None
+        %li
+          %a{:href => "#"} Read
+        %li
+          %a{:href => "#"} Unread
+        %li
+          %a{:href => "#"} Starred
+        %li
+          %a{:href => "#"} Unstarred
+    %span#entries-buttons
+      - if @rss_stream.present?
+        \&nbsp;&nbsp;
+        \#{link_to('<i class="icon-repeat"></i> Reload'.html_safe, @rss_stream, { :remote => true, :class => "btn loadable", :onclick => "loadSpin();" })}
+        \&nbsp;
+        \#{link_to('<i class="icon-edit icon-large"></i> Edit'.html_safe, edit_rss_stream_path(@rss_stream), { :class => "btn", :remote => true })}
+        \&nbsp;
+        \#{link_to('<i class="icon-trash icon-large"></i> Delete'.html_safe, @rss_stream, { :class => "btn btn-danger", :confirm => "Are you sure ?", :method => :delete, :remote => true })}
+        \&nbsp;
+    %span#selected-entries-buttons
+      \&nbsp;&nbsp;
+      .btn-group
+        %a.btn{:href => "#", :onclick => "loadSpin(); $.star_item();", :title => "Star item"}
+          %i.icon-star
+        %a.btn{:href => "#", :onclick => "loadSpin(); $.unstar_item();", :title => "Unstar item"}
+          %i.icon-star-empty
+        %a.btn{:href => "#", :onclick => "loadSpin(); $.mark_as_read();", :title => "Mark as read"}
+          %i.icon-eye-open
+        %a.btn{:href => "#", :onclick => "loadSpin(); $.mark_as_unread();", :title => "Mark as unread"}
+          %i.icon-eye-close
+        %a.btn{:href => "#", :title => "Remove items"}
+          %i.icon-trash
+    \&nbsp;&nbsp;
+    %span#loading
+      %i.icon-spinner.icon-spin.icon-large
+      Loading...
+    #entries-box
+      = render 'rss_streams/entries'
+  #preview

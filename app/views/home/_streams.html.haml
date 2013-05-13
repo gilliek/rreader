@@ -1,0 +1,5 @@
+- if @streams.present?
+  - @streams.each do |stream|
+    %li
+      = link_to(stream.title, stream,                   |
+        { :remote => true, :onclick => "loadSpin();" }) |

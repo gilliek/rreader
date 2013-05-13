@@ -1,0 +1,125 @@
+!!!
+%html
+  %head
+    %title RReader
+    = stylesheet_link_tag    "application", :media => "all"
+    /[if lt IE 8]
+      <haml:loud> stylesheet_link_tag &amp;quot;font-awesome-ie7.min.css&amp;quot;, media: &amp;quot;all&amp;quot; </haml:loud>
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    :javascript
+      $(function() {
+        $("#new_subscription").dialog({
+            autoOpen: false,
+            height: 220,
+            width: 280,
+            modal: true
+        });
+
+        $("#edit_subscription").dialog({
+            autoOpen: false,
+            height: 220,
+            width: 280,
+            modal: true
+        });
+      });
+    :css
+      .nav-list > .active > a, .nav-list > .active > a:hover {
+        color: rgb(255, 255, 255);
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
+        background-color: rgb(200, 48, 37);
+      }
+
+      .nav > li > a:hover > i, .nav > li > a:hover {
+        color: rgb(200, 48, 37);
+      }
+
+      .nav > li a {
+        color: gray;
+      }
+
+      .nav {
+        margin-top: 20px;
+        background-color: #e1e1e1;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border: 1px solid gray;
+        border-bottom-left-radius: 10px 10px;
+        border-bottom-right-radius: 10px 10px;
+        border-top-right-radius: 10px 10px;
+        border-top-left-radius: 10px 10px;
+      }
+
+      #item_options {
+        float: right;
+        margin-top: -30px;
+      }
+  %body
+    #header
+      %p#logo RReader
+      #search_form
+      %p#logout_button
+        = link_to('<i class="icon-off icon-small"></i> Logout'.html_safe, |
+          destroy_user_session_path,                                      |
+          { :class => "btn", :method => :DELETE })                        |
+    #notification
+    #sidepanel
+      %p#subscribe_button
+        = link_to(                                                          |
+          '<i class="icon-rss icon-large"></i> New Subscription'.html_safe, |
+          new_rss_stream_path, { :remote => true,                           |
+          :class => "btn btn-success", :id => "new_sub_btn" })              |
+      %ul.nav.nav-list
+        %li.active
+          = link_to('<i class="icon-home"></i> Home</a>'.html_safe, |
+            home_index_path, :remote => true)                       |
+        %li
+          = link_to('<i class="icon-star"></i> Starred items'.html_safe, |
+            home_starred_path, :remote => true)                          |
+        %li
+          %a{:href => "#"}
+            %i.icon-bar-chart
+            Trends
+        %li
+          = link_to('<i class="icon-cogs"></i> Settings</a>'.html_safe, |
+            home_settings_path, :remote => true)                        |
+      %ul#streams_list.nav.nav-list
+        = render 'home/streams', :collection => @streams
+    - if notice.present?
+      /
+        <p class="notice">
+        <haml:loud>
+        \#notice
+        </haml:loud>
+        </p>
+    - if alert.present?
+      /
+        <p class="alert">
+        <haml:loud>
+        \#alert
+        </haml:loud>
+        </p>
+    #content
+      /
+        <button id="succ">success</button>
+        <button id="err">error</button>
+        <button id="warn">warning</button>
+        <button id="info">info</button>
+        <script type="text/javascript">
+        $('#succ').click(function() {
+        $.notify("Hurray, it's a success !", "success");
+        });
+        $('#err').click(function() {
+        $.notify("Damned, an error occured !", "error");
+        });
+        $('#warn').click(function() {
+        $.notify("Be careful dude !", "warning");
+        });
+        $('#info').click(function() {
+        $.notify("Do not forget it !", "info");
+        });
+        </script>
+      #new_subscription{:title => "New Subscription"}
+      #edit_subscription{:title => "Edit Subscription"}
+      #dialog-form
+      = yield

@@ -1,0 +1,32 @@
+= form_for(@rss_stream, :remote => true) do |f|
+  - if @rss_stream.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@rss_stream.errors.count, "error")
+        prohibited this rss_stream from being saved:
+      %ul
+        - @rss_stream.errors.full_messages.each do |msg|
+          %li= msg
+  %br/
+  /
+    <div class="input-prepend">
+    <span class="add-on"><i class="icon-tag"></i></span>
+    </div>
+  .field
+    %i.icon-tag
+    \&nbsp;
+    \#{f.text_field :title, :placeholder => "Title"}
+  /
+    <div class="input-prepend">
+    <span class="add-on"><i class="icon-rss"></i></span>
+    </div>
+  .field
+    %i.icon-rss>
+    \&nbsp;
+    - if @rss_stream.id.present?
+      = f.text_field(:url,                                |
+        {:placeholder => "URL", :readonly => "readonly"}) |
+    - else
+      = f.text_field :url, :placeholder => "URL"
+  %p.center
+    = f.submit('Subscribe', :class => "btn btn-info")

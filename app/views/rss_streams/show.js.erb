@@ -1,0 +1,31 @@
+var html = "<%= escape_javascript(
+  render(:partial => 'rss_streams/show')) %>"
+$("#content").html(html);
+$("#loading").css("visibility", "hidden");
+$("#panel_splitter").splitter();
+
+// add a preview icon into the preview area
+$('#preview').html(
+    '<div id="preview-icon-box">\
+      <i class="icon-search icon-large"></i>\
+    </div>');
+
+// center vertically the preview icon box
+$('#preview-icon-box').css('margin-top',
+                            ($('#preview').height()/2) - 42 + 'px');
+
+// trick to close the dropdown menu
+$('#toggle-link').click();
+$('#toggle-link').blur();
+
+// Auto adapt the size of the entries list container
+$('#entries').css('width', $('#feed_entries_list').width()-20 + 'px');
+$('#entries-box').css('height', $('#feed_entries_list').height()-90 + 'px');
+$('#entries tr td.entry_title').css('width',
+    $('#entries').width()-185 + 'px');
+
+// add action handlers on toolbar buttons
+entries_selected = false;
+$('#entries-selector').change(function() {
+  $.toggle_entries_toolbar(true);
+});
