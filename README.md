@@ -39,6 +39,6 @@ http://projects.gw-computing.net/projects/rreader
 ## SCREENSHOTS
 ![](screenshots/edit_feed_article.png)
 ![](screenshots/new_subscription.png)
-![](screenshots/starred_items/.png)
+![](screenshots/starred_items.png)
 
 
