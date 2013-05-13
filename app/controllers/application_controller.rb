@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
     end
 
     def check_first_use
-      if params[:action] != 'new' && params[:controller] != 'devise/sessions'
-        num_users = User.all.count
-        redirect_to new_user_registration_url if num_users == 0
-      end
+      #if (params[:action] != 'new' || params[:action] != 'create') && params[:controller] != 'devise/sessions'
+      #  num_users = User.all.count
+      #  redirect_to new_user_registration_url if num_users == 0
+      #end
     end
 end
