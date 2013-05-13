@@ -1,6 +1,5 @@
-%h1 Settings#import_export
-%p Find me in app/views/settings/import_export.html.erb
 = form_tag(settings_do_import_path, :method => "post", :remote => true, :multipart => true) do
   = label_tag(:file, "Import OPML file")
   = file_field_tag(:file)
+  %br
   = submit_tag("Upload")
