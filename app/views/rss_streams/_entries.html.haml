@@ -1,17 +1,20 @@
 %form#entries-form{"data-remote" => "true"}
   %table#entries
-    - @entries.each do |entry|
-      %tr
-        %td.chckbx
-          = check_box_tag 'items[]', entry.id
-        %td.title
-          .outer
-            .inner
-              = star_icon(entry).html_safe
-              \&nbsp;
-              \#{link_to(entry.name, entry, { :remote => true, :class => read_or_not(entry) })}
-        %td.date
-          %em{:style => "color: gray;"}= pretty_date(entry.published_at)
+    - if @entries.present?
+      - @entries.each do |entry|
+        %tr
+          %td.chckbx
+            = check_box_tag 'items[]', entry.id
+          %td.title
+            .outer
+              .inner
+                = star_icon(entry).html_safe
+                \&nbsp;
+                \#{link_to(entry.name, entry, { :remote => true, :class => read_or_not(entry) })}
+          %td.date
+            %em{:style => "color: gray;"}= pretty_date(entry.published_at)
+    - else
+      %p There are no items here yet
 :javascript
   $('form#entries-form input[type="checkbox"]').click(function() {
       var num_selected = $('form#entries-form input:checked').length;
