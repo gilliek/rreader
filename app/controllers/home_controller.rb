@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     urls = RssStream.select("rss_streams.url").all.map { |v| v[:url] }
     RssStream.update_all_feeds(urls)
 
-    @entries = FeedEntry.order("created_at DESC").limit(20)
+    @entries = FeedEntry.order("published_at DESC").limit(20)
 
     respond_to do |format|
       format.html
