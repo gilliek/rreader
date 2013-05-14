@@ -77,9 +77,8 @@
           = link_to('<i class="icon-star"></i> Starred items'.html_safe, |
             home_starred_path, :remote => true)                          |
         %li
-          %a{:href => "#"}
-            %i.icon-bar-chart
-            Trends
+          = link_to('<i class="icon-bar-chart"></i> Trends'.html_safe, |
+            '#', :onclick => 'alert("Not implemented yet !");')
         %li
           = link_to('<i class="icon-cogs"></i> Settings</a>'.html_safe, |
             home_settings_path, :remote => true)                        |
