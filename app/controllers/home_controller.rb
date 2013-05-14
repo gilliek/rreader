@@ -15,7 +15,7 @@ class HomeController < ApplicationController
 
   # GET
   def starred
-    @entries = FeedEntry.where(:starred => true).order("id DESC")
+    @entries = FeedEntry.where(:starred => true).order("published_at DESC")
 
     respond_to do |format|
       format.json { render json: @entries }
