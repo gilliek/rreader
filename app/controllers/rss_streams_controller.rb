@@ -5,8 +5,6 @@ class RssStreamsController < ApplicationController
     @rss_streams = RssStream.all
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @rss_streams }
       format.js
     end
   end
@@ -19,8 +17,6 @@ class RssStreamsController < ApplicationController
     @entries = FeedEntry.all_by_stream(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @entries }
       format.js
     end
   end
@@ -31,8 +27,6 @@ class RssStreamsController < ApplicationController
     @rss_stream = RssStream.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @rss_stream }
       format.js
     end
   end
@@ -50,12 +44,8 @@ class RssStreamsController < ApplicationController
     respond_to do |format|
       if @rss_stream.save
         @streams = RssStream.all_by_title
-        format.html #{ redirect_to @rss_stream, notice: 'Rss stream was successfully created.' }
-        format.json #{ render json: @rss_stream, status: :created, location: @rss_stream }
         format.js
       else
-        format.html #{ render action: "new" }
-        format.json #{ render json: @rss_stream.errors, status: :unprocessable_entity }
         format.js
       end
     end
@@ -70,12 +60,8 @@ class RssStreamsController < ApplicationController
       if @rss_stream.update_attributes(params[:rss_stream])
         @streams = RssStream.all_by_title
         @stream_title = @rss_stream.title
-        format.html #{ redirect_to @rss_stream, notice: 'Rss stream was successfully updated.' }
-        format.json #{ head :no_content }
         format.js
       else
-        format.html #{ render action: "edit" }
-        format.json #{ render json: @rss_stream.errors, status: :unprocessable_entity }
         format.js
       end
     end
@@ -91,8 +77,6 @@ class RssStreamsController < ApplicationController
     @entries = FeedEntry.order("id DESC").limit(5)
 
     respond_to do |format|
-      format.html #{ redirect_to rss_streams_url }
-      format.json { head :no_content }
       format.js
     end
   end
