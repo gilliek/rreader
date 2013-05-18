@@ -38,6 +38,10 @@ function auto_resize() {
   $("#content").css("height", ($(window).height() - 80) + "px");
 }
 
+function loadSpin() {
+  $("#loading").css("visibility", "visible");
+}
+
 $(function() {
   auto_resize();
 
@@ -108,6 +112,11 @@ $(function() {
     }
   };
 
+  function close_notif() {
+    $('#notification').slideUp('fast');
+    notif_activated = false;
+  }
+
   $.notify = function(mess, type) {
     // effect for displaying the new notification
     // /!\ synchronous/asynchronous stuff !
@@ -148,10 +157,7 @@ $(function() {
       $('#notification').html(icon + "&nbsp;" + mess + closeButton);
 
       // add lisetener to the close button
-      $('#close-button').click(function() {
-        $('#notification').slideUp('fast');
-        notif_activated = false;
-      });
+      $('#close-button').click(close_notif);
       $('#close-button').mouseover(function() {
         $('#close-button i').removeClass('icon-remove')
                             .addClass('icon-remove-circle');
@@ -161,12 +167,15 @@ $(function() {
         $('#close-button i').removeClass('icon-remove-circle')
                             .addClass('icon-remove');
       });
+
+      // automatically close the notification after 5 sec
+      setTimeout(close_notif, 5000);
     });
 
     notif_activated = true;
   };
 
-  // Easter egg
+  // Easter eggs
   $(window).on('hashchange', function() {
     var hash = location.hash.replace('#', '');
     if (hash === 'fart') {
@@ -175,7 +184,3 @@ $(function() {
     }
   });
 });
-
-function loadSpin() {
-  $("#loading").css("visibility", "visible");
-}
