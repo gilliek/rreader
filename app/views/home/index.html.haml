@@ -1,1 +1,5 @@
-= render 'rss_streams/show', :collection => @entries
+/
+  load the javascript from show.js and use jQuery to eval it so
+  that we can correctly see the home page
+- js_view = '$(function() { $.globalEval("' + escape_javascript(render(:template => 'rss_streams/show.js.erb', :collection => @entries)) + '");});'
+%script= js_view.html_safe
