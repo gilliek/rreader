@@ -127,8 +127,10 @@ $(function() {
       isReady = true;
 
     // create close button
-    var closeButton = '<a href="#" id="close-button">\
-      <i class="icon-remove close"></i></a>';
+    /*var closeButton = '<a href="#" id="close-button">\
+      <i class="icon-remove close"></i></a>';*/
+    var closeButton =
+      '<button id="close-button" class="close">&times;</button>';
 
     $.when(isReady).then(function() {
       // handle type of error
@@ -158,7 +160,7 @@ $(function() {
 
       // add lisetener to the close button
       $('#close-button').click(close_notif);
-      $('#close-button').mouseover(function() {
+      /*$('#close-button').mouseover(function() {
         $('#close-button i').removeClass('icon-remove')
                             .addClass('icon-remove-circle');
       });
@@ -166,7 +168,7 @@ $(function() {
       $('#close-button').mouseout(function() {
         $('#close-button i').removeClass('icon-remove-circle')
                             .addClass('icon-remove');
-      });
+      });*/
 
       // automatically close the notification after 5 sec
       setTimeout(close_notif, 5000);
