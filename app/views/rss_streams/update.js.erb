@@ -1,6 +1,16 @@
-$("#edit_subscription").dialog("close");
+<% if @rss_stream.errors.any? %>
+  $('#errors_explanations').html(
+      "<%= escape_javascript(
+        output_errors(@rss_stream.errors)).html_safe %>");
 
-var html = "<%= escape_javascript(
-         render('home/streams', :collection => @streams)) %>"
-$("#streams_list").html(html)
-$("#stream_title").html("<%= escape_javascript(@stream_title) %>")
+  var new_height = parseInt($("#edit_subscription form").height()) + 10;
+  $("#edit_subscription").css('height', new_height + "px");
+<% else %>
+  $("#edit_subscription").dialog("close");
+
+  var html = "<%= escape_javascript(
+           render('home/streams', :collection => @streams)) %>"
+  $("#streams_list").html(html)
+  $("#stream_title").html("<%= escape_javascript(@stream_title) %>")
+  $.notify("RSS/Atom feed successufuly updated !", "success")
+<% end %>

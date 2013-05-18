@@ -5,6 +5,8 @@ class RssStreamsController < ApplicationController
     @rss_streams = RssStream.all
 
     respond_to do |format|
+      format.html
+      format.json { render json: @rss_streams }
       format.js
     end
   end
@@ -17,6 +19,8 @@ class RssStreamsController < ApplicationController
     @entries = FeedEntry.all_by_stream(params[:id])
 
     respond_to do |format|
+      format.html
+      format.json { render json: @rss_stream }
       format.js
     end
   end
@@ -27,6 +31,8 @@ class RssStreamsController < ApplicationController
     @rss_stream = RssStream.new
 
     respond_to do |format|
+      format.html
+      format.json { render json: @rss_stream }
       format.js
     end
   end
@@ -39,13 +45,22 @@ class RssStreamsController < ApplicationController
   # POST /rss_streams
   # POST /rss_streams.json
   def create
-    @rss_stream = RssStream.new(params[:rss_stream])
+    new_feed = params[:rss_stream]
+    @rss_stream = RssStream.new
+    @rss_stream.title = new_feed[:title]
+
+    # Find RSS or Atom feed at the given URL and update the RssStream
+    @rss_stream.url = Feedbag.find(new_feed[:url]).first
 
     respond_to do |format|
       if @rss_stream.save
         @streams = RssStream.all_by_title
+        format.html
+        format.json { render json: @rss_stream }
         format.js
       else
+        format.html
+        format.json { render json: @rss_stream.errors, status: :unprocessable_entity }
         format.js
       end
     end
@@ -60,8 +75,12 @@ class RssStreamsController < ApplicationController
       if @rss_stream.update_attributes(params[:rss_stream])
         @streams = RssStream.all_by_title
         @stream_title = @rss_stream.title
+        format.html
+        format.json { head :no_content }
         format.js
       else
+        format.html
+        format.json { render json: @rss_stream.errors, status: :unprocessable_entity }
         format.js
       end
     end
@@ -77,6 +96,8 @@ class RssStreamsController < ApplicationController
     @entries = FeedEntry.order("id DESC").limit(5)
 
     respond_to do |format|
+      format.html
+      format.json { head :no_content }
       format.js
     end
   end

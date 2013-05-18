@@ -1,5 +1,10 @@
 <% if @rss_stream.errors.any? %>
+  $('#errors_explanations').html(
+      "<%= escape_javascript(
+        output_errors(@rss_stream.errors)).html_safe %>");
 
+  var new_height = parseInt($("#new_subscription form").height()) + 10;
+  $("#new_subscription").css('height', new_height + "px");
 <% else %>
   $("#new_subscription").dialog("close");
 

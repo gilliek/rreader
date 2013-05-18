@@ -7,8 +7,8 @@ class RssStream < ActiveRecord::Base
 
   validates :title, :url, :presence => true
   validates :url, :format => {
-	:with	 => /^https?:\/\/.+\.[a-z]{2,4}\//i,
-	:message => 'This must be a valid url.'
+    :with	 => /^https?:\/\/.+\.[a-z]{2,4}\//i,
+    :message => 'must be a valid'
   }
 
   scope :all_by_title, order("UPPER(title) ASC")

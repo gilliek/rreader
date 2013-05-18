@@ -188,3 +188,12 @@ body {
 }
 
 #notification .close { float: right; }
+
+#new_subscription, #edit_subscription {
+  overflow: hidden;
+}
+
+#errors_explanations li {
+  color: red;
+  font-weight: bold;
+}

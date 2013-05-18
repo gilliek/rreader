@@ -1,5 +1,5 @@
 var html_content = "<%= escape_javascript(
-         render('home/index', :collection => @entries)) %>"
+         render(:template => 'home/index', :collection => @entries)) %>"
 
 var html_streams = "<%= escape_javascript(
          render('home/streams', :collection => @streams)) %>"

@@ -11,4 +11,14 @@ module ApplicationHelper
   def read_or_not(entry)
     return !entry.read ? 'bold' : ''
   end
+
+  def output_errors(errors_list)
+    rval = "<ul>\n"
+    errors_list.full_messages.each do |msg|
+      rval += "\t<li>#{msg}</li>\n"
+    end
+    rval += "</ul>\n"
+
+    return rval
+  end
 end
