@@ -16,6 +16,10 @@ gem 'jquery-ui-rails'
 # http://railscasts.com/episodes/168-feed-parsing
 gem 'feedzirra'
 
+# use the fork instead of the original one (https://github.com/damog)
+# because of Nokogiri
+gem 'feedbag', :git => "git://github.com/dwillis/feedbag.git"
+
 gem 'devise'
 
 # http://railsapps.github.io/twitter-bootstrap-rails.html
