@@ -10,7 +10,7 @@
               .inner
                 = star_icon(entry).html_safe
                 \&nbsp;
-                \#{link_to(entry.name, entry, { :remote => true, :class => read_or_not(entry) })}
+                \#{link_to(entry.name, entry, { :remote => true, :class => read_or_not(entry), :title => entry.name })}
           %td.date
             %em{:style => "color: gray;"}= pretty_date(entry.published_at)
     - else
