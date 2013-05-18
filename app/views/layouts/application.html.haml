@@ -98,26 +98,28 @@
         \#alert
         </haml:loud>
         </p>
-    #content
-      /
-        <button id="succ">success</button>
-        <button id="err">error</button>
-        <button id="warn">warning</button>
-        <button id="info">info</button>
-        <script type="text/javascript">
+    /
+      %button#succ success
+      %button#err error
+      %button#warn warning
+      %button#info info
+      :javascript
         $('#succ').click(function() {
-        $.notify("Hurray, it's a success !", "success");
+          $.notify("Hurray, it's a success !", "success");
         });
+
         $('#err').click(function() {
-        $.notify("Damned, an error occured !", "error");
+          $.notify("Damned, an error occured !", "error");
         });
+
         $('#warn').click(function() {
-        $.notify("Be careful dude !", "warning");
+          $.notify("Be careful dude !", "warning");
         });
+
         $('#info').click(function() {
-        $.notify("Do not forget it !", "info");
+          $.notify("Do not forget it !", "info");
         });
-        </script>
+    #content
       #new_subscription{:title => "New Subscription"}
       #edit_subscription{:title => "Edit Subscription"}
       #dialog-form
