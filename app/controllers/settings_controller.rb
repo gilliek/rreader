@@ -3,7 +3,9 @@ include OpmlParser
 class SettingsController < ApplicationController
 	def import_export
 		respond_to do |format|
-			format.html { render :layout => false }
+			format.html
+      format.json
+      format.js
 		end
 	end
 
@@ -23,6 +25,8 @@ class SettingsController < ApplicationController
 		end
 
 		respond_to do |format|
+      format.html
+      format.json
 			format.js
 		end
 	end

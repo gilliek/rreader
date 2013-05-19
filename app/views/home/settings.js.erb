@@ -1,12 +1,8 @@
 var html = "<%= escape_javascript(render('settings')) %>"
 $("#content").html(html);
 
-$("#settings-tabs").tabs({
-  beforeLoad: function( event, ui ) {
-    ui.jqXHR.error(function() {
-      ui.panel.html(
-        "Couldn't load this tab. We'll try to fix this as soon as possible. " +
-        "If this wouldn't be a demo." );
-    });
-  }
+// add the pill change effect on click
+$("ul#settings-pills li a").click(function() {
+ $("ul#settings-pills li").removeClass("active");
+ $(this).parent().addClass("active");
 });

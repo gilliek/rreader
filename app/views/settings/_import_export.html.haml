@@ -1,0 +1,9 @@
+%h4 Import OPML file
+= form_tag(settings_do_import_path, :method => "post", :remote => true, :multipart => true) do
+  %p
+    = file_field_tag(:file)
+  %p
+    = submit_tag("Import", :class => "btn")
+
+%h4 Export as OPML
+%p Not implemented yet
