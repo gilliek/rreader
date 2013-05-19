@@ -4,6 +4,7 @@ class RssStream < ActiveRecord::Base
   after_save :load_feed_entries
 
   has_many :feed_entries, :dependent => :destroy
+  belongs_to :user
 
   validates :title, :url, :presence => true
   validates :url, :format => {
@@ -13,6 +14,7 @@ class RssStream < ActiveRecord::Base
 
   scope :all_by_title, order("UPPER(title) ASC")
 
+  # loads all entries after the creation of the new RssStream
   def load_feed_entries
     last_entry = self.feed_entries.last
     if last_entry.nil?
@@ -25,6 +27,7 @@ class RssStream < ActiveRecord::Base
     RssStream.add_entries(feed.entries, self.id)
   end
 
+  # updates the entries of the given URLs
   def self.update_all_feeds(urls)
     Feedzirra::Feed.fetch_and_parse(urls,
       :on_success => lambda { |url, feed|

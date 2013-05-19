@@ -6,6 +6,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :admin
   # attr_accessible :title, :body
+
+  has_many :rss_streams, :dependent => :destroy
+
+  before_save :check_first_user
+
+  private
+    def check_first_user
+        admin = true if User.all.count == 0
+    end
 end
