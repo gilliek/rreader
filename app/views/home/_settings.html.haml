@@ -2,10 +2,14 @@
   %h3#stream_title Settings
   %ul{:class => "nav nav-pills", :id => "settings-pills"}
     %li.active
-      = link_to('General Settings', home_settings_path, :remote => true)
+      = link_to('<i class="icon-cog"></i> General Settings'.html_safe,
+        home_settings_path, :remote => true)
     %li
-      = link_to('Import/Export', settings_import_export_path, :remote => true)
+      = link_to('<i class="icon-upload-alt"></i> Import/Export'.html_safe,
+        settings_import_export_path, :remote => true)
     %li
-      %a{:href => "#tabs-3"} Administration
+      %a{:href => "#tabs-3"}
+        %i.icon-key
+        Administration
   #settings-container
     %p Not implement yet. (should contains the general settings options)
