@@ -28,7 +28,6 @@
 //= require jquery.ui.dialog
 //= require jquery.ui.tooltip
 //= require jquery.ui.menu
-//= require jquery.ui.tabs
 
 var entries_selected = false;
 var notif_activated = false;

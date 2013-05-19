@@ -1,21 +1,9 @@
 #settings
   %h3#stream_title Settings
-  #settings-tabs
-    %ul
-      %li
-        %a{:href => "#tabs-1"} General Settings
-      %li
-        = link_to('Import/Export', settings_import_export_path)
-      %li
-        %a{:href => "#tabs-3"} Administration
-    #tabs-1
-      %p
-        Proin elit arcu, rutrum commodo, vehicula tempus, commodo a,
-        risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris.
-        Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem.
-        Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo.
-        Vivamus sed magna quis ligula eleifend adipiscing. Duis orci.
-        Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam
-        molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut
-        dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique
-        tempus lectus.
+  %ul{:class => "nav nav-pills", :id => "settings-pills"}
+    %li.active
+      %a{:href => "#"} General Settings
+    %li
+      = link_to('Import/Export', settings_import_export_path)
+    %li
+      %a{:href => "#tabs-3"} Administration
