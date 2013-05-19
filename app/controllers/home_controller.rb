@@ -1,10 +1,16 @@
 class HomeController < ApplicationController
   # GET
   def index
-    urls = RssStream.select("rss_streams.url").all.map { |v| v[:url] }
-    RssStream.update_all_feeds(urls)
+    urls = RssStream.select("rss_streams.url")
+                    .where(:user_id => current_user.id)
+                    .map { |v| v[:url] }
 
-    @entries = FeedEntry.order("published_at DESC").limit(20)
+    RssStream.update_all_feeds(urls, current_user.id)
+
+    @entries = FeedEntry.joins(:rss_stream)
+                        .where("rss_streams.user_id = ?", current_user.id)
+                        .order("published_at DESC")
+                        .limit(42)
 
     respond_to do |format|
       format.html
@@ -15,7 +21,11 @@ class HomeController < ApplicationController
 
   # GET
   def starred
-    @entries = FeedEntry.where(:starred => true).order("published_at DESC")
+    @entries = FeedEntry.joins(:rss_stream)
+                        .where("feed_entries.starred = ? AND " +
+                               "rss_streams.user_id = ?",
+                               true, current_user.id)
+                        .order("published_at DESC")
 
     respond_to do |format|
       format.json { render json: @entries }

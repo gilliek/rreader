@@ -15,6 +15,6 @@ class User < ActiveRecord::Base
 
   private
     def check_first_user
-        admin = true if User.all.count == 0
+        self.admin = true if User.all.count == 0
     end
 end

@@ -2,7 +2,7 @@ class RssStreamsController < ApplicationController
   # GET /rss_streams
   # GET /rss_streams.json
   def index
-    @rss_streams = RssStream.all
+    @rss_streams = RssStream.where(:user_id => current_user.id)
 
     respond_to do |format|
       format.html
@@ -48,6 +48,7 @@ class RssStreamsController < ApplicationController
     new_feed = params[:rss_stream]
     @rss_stream = RssStream.new
     @rss_stream.title = new_feed[:title]
+    @rss_stream.user_id = current_user.id
 
     # Find RSS or Atom feed at the given URL and update the RssStream
     @rss_stream.url = Feedbag.find(new_feed[:url]).first

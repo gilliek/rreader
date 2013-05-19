@@ -1,5 +1,5 @@
 class RssStream < ActiveRecord::Base
-  attr_accessible :title, :url
+  attr_accessible :title, :url, :user_id
 
   after_save :load_feed_entries
 
@@ -12,7 +12,7 @@ class RssStream < ActiveRecord::Base
     :message => 'must be a valid'
   }
 
-  scope :all_by_title, order("UPPER(title) ASC")
+  scope :all_by_title, where(:user_id => 1).order("UPPER(title) ASC")
 
   # loads all entries after the creation of the new RssStream
   def load_feed_entries
@@ -24,23 +24,23 @@ class RssStream < ActiveRecord::Base
         :if_modified_since => last_entry.published_at.to_time)
     end
 
-    RssStream.add_entries(feed.entries, self.id)
+    RssStream.add_entries(feed.entries, self.id, self.user_id)
   end
 
   # updates the entries of the given URLs
-  def self.update_all_feeds(urls)
+  def self.update_all_feeds(urls, current_id)
     Feedzirra::Feed.fetch_and_parse(urls,
       :on_success => lambda { |url, feed|
         rss = RssStream.select("rss_streams.id").where(:url => url).first
-        RssStream.add_entries(feed.entries, rss.id)
+        RssStream.add_entries(feed.entries, rss.id, current_id)
       }
     )
   end
 
   private
-    def self.add_entries(entries, stream_id)
+    def self.add_entries(entries, stream_id, current_id)
       entries.each do |entry|
-          unless  FeedEntry.exists?(:guid => entry.id)
+          unless FeedEntry.joins(:rss_stream).where("rss_streams.user_id = ?", current_id).exists?(:guid => entry.id)
             FeedEntry.create!(
               :name          => entry.title,
               :summary       => entry.summary,

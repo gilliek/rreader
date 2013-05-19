@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   private
     def streams_list
-      @streams = RssStream.order("UPPER(title) ASC")
+      @streams = RssStream.all_by_title
     end
 
     def check_first_use
