@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   private
     def streams_list
-      @streams = RssStream.all_by_title
+      @streams = RssStream.all_by_title(current_user.id)
     end
 
     def check_first_use

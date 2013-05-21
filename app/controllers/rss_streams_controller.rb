@@ -55,7 +55,7 @@ class RssStreamsController < ApplicationController
 
     respond_to do |format|
       if @rss_stream.save
-        @streams = RssStream.all_by_title
+        @streams = RssStream.all_by_title(current_user.id)
         format.html
         format.json { render json: @rss_stream }
         format.js
@@ -74,7 +74,7 @@ class RssStreamsController < ApplicationController
 
     respond_to do |format|
       if @rss_stream.update_attributes(params[:rss_stream])
-        @streams = RssStream.all_by_title
+        @streams = RssStream.all_by_title(current_user.id)
         @stream_title = @rss_stream.title
         format.html
         format.json { head :no_content }
@@ -93,7 +93,7 @@ class RssStreamsController < ApplicationController
     @rss_stream = RssStream.find(params[:id])
     @rss_stream.destroy
 
-    @streams = RssStream.all_by_title
+    @streams = RssStream.all_by_title(current_user.id)
     @entries = FeedEntry.order("id DESC").limit(5)
 
     respond_to do |format|

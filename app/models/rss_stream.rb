@@ -12,7 +12,7 @@ class RssStream < ActiveRecord::Base
     :message => 'must be a valid'
   }
 
-  scope :all_by_title, where(:user_id => 1).order("UPPER(title) ASC")
+  scope :all_by_title, lambda { |id| where(:user_id => id).order("UPPER(title) ASC") }
 
   # loads all entries after the creation of the new RssStream
   def load_feed_entries
