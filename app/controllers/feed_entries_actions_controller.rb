@@ -6,6 +6,7 @@ class FeedEntriesActionsController < ApplicationController
 
     respond_to do |format|
       if err.empty?
+        @num_items = params[:items].length
         format.js
       else
         format.js err
@@ -20,6 +21,7 @@ class FeedEntriesActionsController < ApplicationController
 
     respond_to do |format|
       if err.empty?
+        @num_items = params[:items].length
         format.js
       else
         format.js err
@@ -34,6 +36,7 @@ class FeedEntriesActionsController < ApplicationController
 
     respond_to do |format|
       if err.empty?
+        @num_items = params[:items].length
         format.js
       else
         format.js err
@@ -48,6 +51,7 @@ class FeedEntriesActionsController < ApplicationController
 
     respond_to do |format|
       if err.empty?
+        @num_items = params[:items].length
         format.js
       else
         format.js err
@@ -68,6 +72,7 @@ class FeedEntriesActionsController < ApplicationController
     @entries = FeedEntry.all_by_stream(id)
 
     respond_to do |format|
+      @num_items = params[:items].length
       format.js
     end
   end

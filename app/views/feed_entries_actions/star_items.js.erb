@@ -10,3 +10,4 @@ $('#entries tr td.entry_title').css('width',
 $('#entries-selector').removeAttr('checked')
 $.toggle_entries_toolbar(false);
 $("#loading").css("visibility", "hidden");
+$.notify("<%= pluralize(@num_items, "item") %> starred !", "success");
