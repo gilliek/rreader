@@ -88,6 +88,12 @@ $(function() {
     $('#entries-form').submit();
   };
 
+  $.restore_item = function() {
+    $('#entries-form').attr('action', '/feed_entries_actions/restore_items');
+    $('#entries-form').attr('method', 'put');
+    $('#entries-form').submit();
+  };
+
   $.toggle_entries_toolbar = function(checkall) {
     // update toolbar buttons
     if (!entries_selected) {

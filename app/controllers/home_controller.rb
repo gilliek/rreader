@@ -37,6 +37,19 @@ class HomeController < ApplicationController
   end
 
   # GET
+  def trash
+	@entries = FeedEntry.joins(:rss_stream)
+						.where("rss_streams.user_id = ? AND " +
+							   "feed_entries.removed = ?",
+							   current_user.id, true)
+						.order("published_at DESC")
+	respond_to do |format|
+		format.json { render json: @entries }
+		format.js { render 'rss_streams/show', :collection => @entries }
+	end
+  end
+
+  # GET
   def settings
     respond_to do |format|
       format.js

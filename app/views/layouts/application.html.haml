@@ -87,6 +87,9 @@
           = link_to('<i class="icon-star"></i> Starred items'.html_safe, |
             home_starred_path, :remote => true)                          |
         %li
+          = link_to('<i class="icon-trash"></i> Trash'.html_safe, |
+            home_trash_path, :remote => true)
+        %li
           = link_to('<i class="icon-bar-chart"></i> Trends'.html_safe, |
             '#', :onclick => 'alert("Not implemented yet !");')
         %li

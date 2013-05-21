@@ -38,16 +38,20 @@
     %span#selected-entries-buttons
       \&nbsp;&nbsp;
       .btn-group
-        %a.btn{:href => "#", :onclick => "loadSpin(); $.star_item();", :title => "Star item"}
+        %a.btn{:href => "#", :onclick => "loadSpin(); $.star_item();", :title => "Star"}
           %i.icon-star
-        %a.btn{:href => "#", :onclick => "loadSpin(); $.unstar_item();", :title => "Unstar item"}
+        %a.btn{:href => "#", :onclick => "loadSpin(); $.unstar_item();", :title => "Unstar"}
           %i.icon-star-empty
         %a.btn{:href => "#", :onclick => "loadSpin(); $.mark_as_read();", :title => "Mark as read"}
           %i.icon-eye-open
         %a.btn{:href => "#", :onclick => "loadSpin(); $.mark_as_unread();", :title => "Mark as unread"}
           %i.icon-eye-close
-        %a.btn{:href => "#", :onclick => "loadSpin(); $.remove_item();", :title => "Remove items"}
-          %i.icon-trash
+        - if params[:action] == 'trash'
+          %a.btn{:href => "#", :onclick => "loadSpin(); $.restore_item();", :title => "Restore"}
+            %i.icon-undo
+        - else
+          %a.btn{:href => "#", :onclick => "loadSpin(); $.remove_item();", :title => "Remove"}
+            %i.icon-trash
     \&nbsp;&nbsp;
     %span#loading
       %i.icon-spinner.icon-spin.icon-large

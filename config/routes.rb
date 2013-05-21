@@ -11,6 +11,8 @@ RReader::Application.routes.draw do
 
   get "home/starred"
 
+  get "home/trash"
+
   get "home/settings"
 
   put "feed_entries_actions/star_items"
@@ -22,6 +24,8 @@ RReader::Application.routes.draw do
   put "feed_entries_actions/mark_as_unread"
 
   delete "feed_entries_actions/remove_items"
+
+  put "feed_entries_actions/restore_items"
 
   resources :rss_streams
 

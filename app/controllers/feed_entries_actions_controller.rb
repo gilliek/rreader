@@ -77,6 +77,28 @@ class FeedEntriesActionsController < ApplicationController
     end
   end
 
+  # PUT
+  def restore_items
+    id = -1
+
+    params[:items].each do |id_item|
+      entry = FeedEntry.find(id_item)
+      id = entry.rss_stream_id
+      entry.update_attributes(:removed => false)
+    end
+
+	@entries = FeedEntry.joins(:rss_stream)
+						.where("rss_streams.user_id = ? AND " +
+							   "feed_entries.removed = ?",
+							   current_user.id, true)
+						.order("published_at DESC")
+
+    respond_to do |format|
+      @num_items = params[:items].length
+      format.js
+    end
+  end
+
   private
     def update_items(items, attr, value)
       errors_array = Array.new
