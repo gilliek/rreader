@@ -1,6 +1,0 @@
-= form_tag(settings_do_import_path, :method => "post", :remote => true, :multipart => true) do
-  %p
-    = label_tag(:file, "Import OPML file")
-    = file_field_tag(:file)
-  %p
-    = submit_tag("Upload", :class => "btn")
