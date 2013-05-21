@@ -46,7 +46,7 @@
           %i.icon-eye-open
         %a.btn{:href => "#", :onclick => "loadSpin(); $.mark_as_unread();", :title => "Mark as unread"}
           %i.icon-eye-close
-        %a.btn{:href => "#", :title => "Remove items"}
+        %a.btn{:href => "#", :onclick => "loadSpin(); $.remove_item();", :title => "Remove items"}
           %i.icon-trash
     \&nbsp;&nbsp;
     %span#loading

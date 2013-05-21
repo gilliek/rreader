@@ -59,10 +59,10 @@ class FeedEntriesActionsController < ApplicationController
   def remove_items
     id = -1
 
-    params[:items].each do |id|
-      entry = FeedEntry.find(id)
+    params[:items].each do |id_item|
+      entry = FeedEntry.find(id_item)
       id = entry.rss_stream_id
-      entry.destroy
+      entry.update_attributes(:removed => true)
     end
 
     @entries = FeedEntry.all_by_stream(id)

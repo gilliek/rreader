@@ -8,7 +8,9 @@ class HomeController < ApplicationController
     RssStream.update_all_feeds(urls, current_user.id)
 
     @entries = FeedEntry.joins(:rss_stream)
-                        .where("rss_streams.user_id = ?", current_user.id)
+                        .where("rss_streams.user_id = ? AND " +
+							   "feed_entries.removed = ?",
+							   current_user.id, false)
                         .order("published_at DESC")
                         .limit(42)
 
@@ -23,8 +25,9 @@ class HomeController < ApplicationController
   def starred
     @entries = FeedEntry.joins(:rss_stream)
                         .where("feed_entries.starred = ? AND " +
-                               "rss_streams.user_id = ?",
-                               true, current_user.id)
+                               "rss_streams.user_id = ? AND " +
+							   "feed_entries.removed = ?",
+                               true, current_user.id, false)
                         .order("published_at DESC")
 
     respond_to do |format|

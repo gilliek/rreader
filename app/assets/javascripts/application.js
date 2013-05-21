@@ -82,6 +82,12 @@ $(function() {
     $('#entries-form').submit();
   };
 
+  $.remove_item = function() {
+    $('#entries-form').attr('action', '/feed_entries_actions/remove_items');
+    $('#entries-form').attr('method', 'delete');
+    $('#entries-form').submit();
+  };
+
   $.toggle_entries_toolbar = function(checkall) {
     // update toolbar buttons
     if (!entries_selected) {
