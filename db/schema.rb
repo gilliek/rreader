@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130519172048) do
+ActiveRecord::Schema.define(:version => 20130521164714) do
 
   create_table "feed_entries", :force => true do |t|
     t.string   "name"
@@ -19,12 +19,13 @@ ActiveRecord::Schema.define(:version => 20130519172048) do
     t.string   "url"
     t.datetime "published_at"
     t.string   "guid"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.text     "content"
     t.integer  "rss_stream_id"
     t.boolean  "read"
     t.boolean  "starred"
+    t.boolean  "removed",       :default => false
   end
 
   create_table "rss_streams", :force => true do |t|
