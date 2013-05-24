@@ -25,6 +25,8 @@ gem 'devise'
 # http://railsapps.github.io/twitter-bootstrap-rails.html
 gem 'bootstrap-sass' # sass version of the Bootstrap Twitter
 
+gem 'bootstrap-x-editable-rails'
+
 # https://github.com/bokmann/font-awesome-rails
 # http://fortawesome.github.io/Font-Awesome/#
 gem 'font-awesome-rails' # awesome UI elements !
