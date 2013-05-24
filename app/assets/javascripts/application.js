@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-editable
 //= require jquery.browser
 //= require jquery.splitter
 //= require fartscroll
@@ -57,6 +58,7 @@ $(function() {
 
   $("#panel_splitter").splitter();
   $(document).tooltip({ track: true });
+  //$(document).tooltip();
 
   $.star_item = function() {
     $('#entries-form').attr('action', '/feed_entries_actions/star_items');
