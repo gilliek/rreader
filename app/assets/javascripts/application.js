@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require bootstrap-editable
 //= require jquery.browser
 //= require jquery.splitter
 //= require fartscroll
