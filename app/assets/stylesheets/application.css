@@ -21,6 +21,7 @@
  *= require jquery.ui.accordion
  *= require jquery.ui.tooltip
  *= require font-awesome
+ *= require bootstrap-fileupload
  */
 
 body {
@@ -131,8 +132,6 @@ body {
   margin: 15px 10px 10px 10px;
 }
 
-.center { text-align: center; }
-
 #entries-box {
   overflow: auto;
 }
@@ -169,8 +168,6 @@ body {
 }
 /* end of the trick */
 
-.bold { font-weight: bold }
-
 #notification {
   width: 350px;
   height: 25px;
@@ -196,3 +193,14 @@ body {
   color: red;
   font-weight: bold;
 }
+
+/* Bootstrap / Font-Awesome */
+.icons-ul { list-style-type: none;       }
+.popover  { max-width: 650px !important; }
+
+/* helpers */
+.center      { text-align: center; }
+.bold        { font-weight: bold   }
+.float-left  { float: left;        }
+.float-right { float: right;       }
+.left-20     { margin-left: 20px;  }

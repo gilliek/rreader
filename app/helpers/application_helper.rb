@@ -13,9 +13,9 @@ module ApplicationHelper
   end
 
   def output_errors(errors_list)
-    rval = "<ul>\n"
+    rval = "<ul class=\"icons-ul\">\n"
     errors_list.full_messages.each do |msg|
-      rval += "\t<li>#{msg}</li>\n"
+      rval += "\t<li><i class=\"icon-li icon-remove\"></i> #{msg}</li>\n"
     end
     rval += "</ul>\n"
 

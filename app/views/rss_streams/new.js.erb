@@ -1,5 +1,10 @@
 var html = "<%= escape_javascript(
   render(:partial => 'rss_streams/new')) %>"
-$("#new_subscription").html(html);
 
-$("#new_subscription").dialog("open");
+$('#new_sub_btn').popover({
+  html: true,
+  title: 'New subscription',
+  content: html
+});
+
+$('#new_sub_btn').popover('toggle');

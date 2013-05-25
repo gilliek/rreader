@@ -1,25 +1,26 @@
 = form_for(@rss_stream, :remote => true) do |f|
   #errors_explanations
-  %br/
-  /
-    <div class="input-prepend">
-    <span class="add-on"><i class="icon-tag"></i></span>
-    </div>
-  .field
-    %i.icon-tag
-    \&nbsp;
-    \#{f.text_field :title, :placeholder => "Title"}
-  /
-    <div class="input-prepend">
-    <span class="add-on"><i class="icon-rss"></i></span>
-    </div>
-  .field
-    %i.icon-rss>
-    \&nbsp;
+  -if @rss_stream.id.present?
+    .input-prepend
+      .add-on
+        %i.icon-tag
+      .span2
+        \#{f.text_field :title, :placeholder => "Title"}
+
+  .input-prepend.float-left
+    %span.add-on
+      %i.icon-rss
     - if @rss_stream.id.present?
-      = f.text_field(:url,                                |
-        {:placeholder => "URL", :readonly => "readonly"}) |
+      = f.text_field(:url, {:placeholder => "URL", |
+        :readonly => "readonly", :class => "span2", |
+        :size => "50"}) |
     - else
-      = f.text_field :url, :placeholder => "URL"
-  %p.center
-    = f.submit('Subscribe', :class => "btn btn-info")
+      = f.text_field(:url, { :placeholder => "URL", |
+        :class => "span2", :size => "50" }) |
+  %p.center.float-right.left-20
+    /
+      = f.submit('Subscribe', :class => "btn btn-info")
+    %a#submitSub.btn.btn-info{:onclick => 'loadInsideSpin(this); $(this).parent().parent().submit();'}
+      %i.icon-ok
+    %a.btn{:onclick => "$('#new_sub_btn').popover('destroy');"}
+      %i.icon-remove

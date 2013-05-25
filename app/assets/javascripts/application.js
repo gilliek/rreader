@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-fileupload
 //= require jquery.browser
 //= require jquery.splitter
 //= require fartscroll
@@ -39,6 +40,16 @@ function auto_resize() {
 
 function loadSpin() {
   $("#loading").css("visibility", "visible");
+}
+
+function loadInsideSpin(elmt) {
+  $(elmt).children().removeClass('icon-ok');
+  $(elmt).children().addClass('icon-spinner icon-spin');
+}
+
+function unloadInsideSpin(elmt) {
+  $(elmt).children().removeClass('icon-spinner icon-spin');
+  $(elmt).children().addClass('icon-ok');
 }
 
 $(function() {

@@ -2,11 +2,12 @@ class RssStream < ActiveRecord::Base
   attr_accessible :title, :url, :user_id
 
   after_save :load_feed_entries
+  before_save :handle_empty_title
 
   has_many :feed_entries, :dependent => :destroy
   belongs_to :user
 
-  validates :title, :url, :presence => true
+  validates :title, :presence => true, :on => :update
   validates :url, :format => {
     :with	 => /^https?:\/\/.+\.[a-z]{2,4}\//i,
     :message => 'must be a valid'
@@ -22,6 +23,11 @@ class RssStream < ActiveRecord::Base
     else
       feed = Feedzirra::Feed.fetch_and_parse(self.url,
         :if_modified_since => last_entry.published_at.to_time)
+    end
+
+    # update the feed title if required and possible
+    if !feed.nil? && !feed.title.nil? && self.title != feed.title
+      self.update_attributes({:title => feed.title})
     end
 
     RssStream.add_entries(feed.entries, self.id, self.user_id)
@@ -53,5 +59,9 @@ class RssStream < ActiveRecord::Base
             )
           end
       end
+    end
+
+    def handle_empty_title
+      self.title = "unknown" if title.nil? || title.empty?
     end
 end
