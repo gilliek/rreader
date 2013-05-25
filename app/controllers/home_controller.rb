@@ -9,8 +9,8 @@ class HomeController < ApplicationController
 
     @entries = FeedEntry.joins(:rss_stream)
                         .where("rss_streams.user_id = ? AND " +
-							   "feed_entries.removed = ?",
-							   current_user.id, false)
+							                 "feed_entries.removed = ?",
+							                 current_user.id, false)
                         .order("published_at DESC")
                         .limit(42)
 
