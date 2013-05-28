@@ -3,11 +3,14 @@
       "<%= escape_javascript(
         output_errors(@rss_stream.errors)).html_safe %>");
 
-  var new_height = parseInt($("#edit_subscription form").height()) + 10;
-  $("#edit_subscription").css('height', new_height + "px");
+  /*var new_height = parseInt($("#edit_subscription form").height()) + 10;
+  $("#edit_subscription").css('height', new_height + "px");*/
 <% else %>
   //$("#edit_subscription").dialog("close");
   $('#edit_sub_btn').popover('destroy');
+
+  // disable lock
+  edit_subscription_lock = false;
 
   var html = "<%= escape_javascript(
            render('home/streams', :collection => @streams)) %>"

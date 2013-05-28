@@ -24,8 +24,8 @@
     %a#submitSub.btn.btn-info{:onclick => 'loadInsideSpin(this); $(this).parent().parent().submit();'}
       %i.icon-ok
     -if @rss_stream.id.present?
-      %a.btn{:onclick => "$('#edit_sub_btn').popover('destroy');"}
+      %a.btn{:onclick => "$('#edit_sub_btn').popover('destroy'); edit_subscription_lock = false;"}
         %i.icon-remove
     -else
-      %a.btn{:onclick => "$('#new_sub_btn').popover('destroy');"}
+      %a.btn{:onclick => "$('#new_sub_btn').popover('destroy'); new_subscription_lock = false;"}
         %i.icon-remove

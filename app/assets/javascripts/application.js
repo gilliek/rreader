@@ -33,6 +33,10 @@
 var entries_selected = false;
 var notif_activated = false;
 
+// Lock to avoid multiple clicks on the new/edit subscription button
+var new_subscription_lock = false;
+var edit_subscription_lock = false;
+
 function auto_resize() {
   $("#content").css("width", ($(window).width() - 310) + "px");
   $("#content").css("height", ($(window).height() - 80) + "px");

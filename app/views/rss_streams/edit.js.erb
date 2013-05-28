@@ -1,13 +1,23 @@
-var html = "<%= escape_javascript(
-  render(:partial => 'rss_streams/edit')) %>"
-//$("#edit_subscription").html(html);
+if (!edit_subscription_lock) {
+  var html = "<%= escape_javascript(
+    render(:partial => 'rss_streams/edit')) %>"
+  //$("#edit_subscription").html(html);
 
-//$("#edit_subscription").dialog("open");
-$("#edit_sub_btn").popover({
-  html: true,
-  placement: 'bottom',
-  title: 'Edit subscription',
-  content: html
-});
+  //$("#edit_subscription").dialog("open");
+  $("#edit_sub_btn").popover({
+    html: true,
+    placement: 'bottom',
+    title: 'Edit subscription',
+    content: html
+  });
 
-$("#edit_sub_btn").popover('toggle');
+  $("#edit_sub_btn").popover('toggle');
+
+  // enable lock
+  edit_subscription_lock = true;
+} else {
+  $("#edit_sub_btn").popover('destroy');
+
+  // disable lock
+  edit_subscription_lock = false;
+}

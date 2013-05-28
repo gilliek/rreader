@@ -1,10 +1,20 @@
-var html = "<%= escape_javascript(
-  render(:partial => 'rss_streams/new')) %>"
+if (!new_subscription_lock) {
+  var html = "<%= escape_javascript(
+    render(:partial => 'rss_streams/new')) %>"
 
-$('#new_sub_btn').popover({
-  html: true,
-  title: 'New subscription',
-  content: html
-});
+  $('#new_sub_btn').popover({
+    html: true,
+    title: 'New subscription',
+    content: html
+  });
 
-$('#new_sub_btn').popover('toggle');
+  $('#new_sub_btn').popover('toggle');
+
+  // enable lock
+  new_subscription_lock = true;
+} else {
+  $('#new_sub_btn').popover('destroy');
+
+  // disable lock
+  new_subscription_lock = false;
+}
