@@ -13,6 +13,8 @@ RReader::Application.routes.draw do
 
   get "home/trash"
 
+  get "home/trends"
+
   get "home/settings"
 
   put "feed_entries_actions/star_items"

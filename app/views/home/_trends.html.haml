@@ -1,0 +1,19 @@
+#trends
+  %h3#stream_title Trends
+  %ul
+    %li
+      %strong # of feeds:
+      = @trends[:total_feeds]
+    %li
+      %strong # of feed entries:
+      = @trends[:total_entries]
+    %li
+      %strong # of read items:
+      = @trends[:total_read]
+    %li
+      %strong # of starred items:
+      = @trends[:total_starred]
+    %li
+      %strong # of items in the trash:
+      = @trends[:total_trash]
+
