@@ -1,5 +1,13 @@
 var html = "<%= escape_javascript(
   render(:partial => 'rss_streams/edit')) %>"
-$("#edit_subscription").html(html);
+//$("#edit_subscription").html(html);
 
-$("#edit_subscription").dialog("open");
+//$("#edit_subscription").dialog("open");
+$("#edit_sub_btn").popover({
+  html: true,
+  placement: 'bottom',
+  title: 'Edit subscription',
+  content: html
+});
+
+$("#edit_sub_btn").popover('toggle');

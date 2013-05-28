@@ -21,4 +21,10 @@ module ApplicationHelper
 
     return rval
   end
+
+  def float_right_or_not(presence=false)
+   rval = ""
+   rval = "center float-right left-20" if !presence
+   return rval
+  end
 end

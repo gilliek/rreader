@@ -1,26 +1,31 @@
 = form_for(@rss_stream, :remote => true) do |f|
   #errors_explanations
   -if @rss_stream.id.present?
-    .input-prepend
-      .add-on
+    .input-prepend.float-left
+      %span.add-on
         %i.icon-tag
-      .span2
-        \#{f.text_field :title, :placeholder => "Title"}
+      = f.text_field(:title, {:placeholder => "Title", |
+                              :class => "span2", |
+                              :size => "50"}) |
+    %br
 
   .input-prepend.float-left
     %span.add-on
       %i.icon-rss
-    - if @rss_stream.id.present?
+    -if @rss_stream.id.present?
       = f.text_field(:url, {:placeholder => "URL", |
         :readonly => "readonly", :class => "span2", |
         :size => "50"}) |
-    - else
+    -else
       = f.text_field(:url, { :placeholder => "URL", |
         :class => "span2", :size => "50" }) |
-  %p.center.float-right.left-20
-    /
-      = f.submit('Subscribe', :class => "btn btn-info")
+
+  %p{:class => float_right_or_not(@rss_stream.id.present?)}
     %a#submitSub.btn.btn-info{:onclick => 'loadInsideSpin(this); $(this).parent().parent().submit();'}
       %i.icon-ok
-    %a.btn{:onclick => "$('#new_sub_btn').popover('destroy');"}
-      %i.icon-remove
+    -if @rss_stream.id.present?
+      %a.btn{:onclick => "$('#edit_sub_btn').popover('destroy');"}
+        %i.icon-remove
+    -else
+      %a.btn{:onclick => "$('#new_sub_btn').popover('destroy');"}
+        %i.icon-remove

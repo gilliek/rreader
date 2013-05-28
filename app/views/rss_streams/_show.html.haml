@@ -31,7 +31,7 @@
         \&nbsp;&nbsp;
         \#{link_to('<i class="icon-repeat"></i> Reload'.html_safe, @rss_stream, { :remote => true, :class => "btn loadable", :onclick => "loadSpin();" })}
         \&nbsp;
-        \#{link_to('<i class="icon-edit icon-large"></i> Edit'.html_safe, edit_rss_stream_path(@rss_stream), { :class => "btn", :remote => true })}
+        \#{link_to('<i class="icon-edit icon-large"></i> Edit'.html_safe, edit_rss_stream_path(@rss_stream), { :id => "edit_sub_btn", :class => "btn", :remote => true })}
         \&nbsp;
         \#{link_to('<i class="icon-trash icon-large"></i> Delete'.html_safe, @rss_stream, { :class => "btn btn-danger", :confirm => "Are you sure ?", :method => :delete, :remote => true })}
         \&nbsp;

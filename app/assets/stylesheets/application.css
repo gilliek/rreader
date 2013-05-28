@@ -196,7 +196,7 @@ body {
 
 /* Bootstrap / Font-Awesome */
 .icons-ul { list-style-type: none;       }
-.popover  { max-width: 650px !important; }
+.popover  { max-width: 650px !important; max-height: 500px !important; }
 
 /* helpers */
 .center      { text-align: center; }
