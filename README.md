@@ -14,6 +14,7 @@ The latter means that the web page never needs to be refreshed.
 ## TESTING THE APPLICATION
 
 You need Ruby 1.9.3. Ideally, you should use `rvm` to manage your ruby version.
+You also need a to install a runtime JS like nodejs for instance.
 
 Once you have cloned this repository, execute the following commands from the
 root's directory:
