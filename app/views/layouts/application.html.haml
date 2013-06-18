@@ -6,6 +6,7 @@
     = stylesheet_link_tag    "application", :media => "all"
     /[if lt IE 8]
       <haml:loud> stylesheet_link_tag &amp;quot;font-awesome-ie7.min.css&amp;quot;, media: &amp;quot;all&amp;quot; </haml:loud>
+
     = javascript_include_tag "application"
     = csrf_meta_tags
     :javascript
@@ -138,3 +139,5 @@
         #edit_subscription{:title => "Edit Subscription"}
         #dialog-form
       = yield
+
+

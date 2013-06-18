@@ -149,16 +149,17 @@ body {
 }
 
 /* trick to make overflow hidden property work on a <a> into a <td> */
-#entries tr td .outer {
-  position: relative;
-  top: -7px;
+table#entries {
+    width: 100%;
+    table-layout: fixed;
+}
+table#entries td {
+    overflow-x: hidden;
+    white-space: nowrap;
 }
 
-#entries tr td .inner {
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 100%;
+div[class="tooltip-inner"] {
+    white-space: normal !important;
 }
 /* end of the trick */
 
@@ -191,6 +192,32 @@ body {
 /* Bootstrap / Font-Awesome */
 .icons-ul { list-style-type: none;       }
 .popover  { max-width: 650px !important; max-height: 500px !important; }
+
+/* bootstrap tooltip extension (provides more placement options */
+.tooltip.top-left .tooltip-arrow {
+  bottom: -5px;
+  left: 5px;
+  border-width: 5px 5px 0;
+  border-top-color: black;
+}
+.tooltip.top-right .tooltip-arrow {
+  bottom: -5px;
+  right: 5px;
+  border-width: 5px 5px 0;
+  border-top-color: black;
+}
+.tooltip.bottom-left .tooltip-arrow {
+  top: -5px;
+  left: 5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: black;
+}
+.tooltip.bottom-right .tooltip-arrow {
+  top: -5px;
+  right: 5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: black;
+}
 
 /* helpers */
 .center      { text-align: center; }

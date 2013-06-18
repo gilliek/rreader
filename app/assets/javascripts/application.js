@@ -12,12 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
-//= require bootstrap-fileupload
 //= require jquery.browser
 //= require jquery.splitter
 //= require fartscroll
 //= require_tree .
+//= require bootstrap-button
+//= require bootstrap-dropdown
+//= require bootstrap-tooltip
+//= require bootstrap-tooltip-extension
+//= require bootstrap-popover
+//= require bootstrap-fileupload
 
 var entries_selected = false;
 var notif_activated = false;
