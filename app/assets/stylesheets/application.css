@@ -68,7 +68,7 @@ body {
   padding: 10px;
 }
 
-#settings { padding-left: 15px; }
+#settings, #trends { padding-left: 15px; }
 
 #settings-tabs { width: 100%; margin-top: 15px; }
 

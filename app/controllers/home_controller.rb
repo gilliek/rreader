@@ -50,6 +50,33 @@ class HomeController < ApplicationController
   end
 
   # GET
+  def trends
+	  @trends = {
+		  :total_feeds => RssStream.where(:user_id => current_user.id).count,
+		  :total_entries => FeedEntry.joins(:rss_stream)
+		                             .where("rss_streams.user_id = ?",
+											current_user.id)
+									 .count,
+		  :total_starred => FeedEntry.joins(:rss_stream)
+									 .where("rss_streams.user_id = ? AND starred = ?",
+											current_user.id, true)
+									 .count,
+		  :total_trash => FeedEntry.joins(:rss_stream)
+									 .where("rss_streams.user_id = ? AND removed = ?",
+											current_user.id, true)
+									 .count,
+		  :total_read => FeedEntry.joins(:rss_stream)
+									 .where("rss_streams.user_id = ? AND read = ?",
+											current_user.id, true)
+									 .count
+	  }
+	  respond_to do |format|
+		format.json { render json: @trends }
+		format.js
+	  end
+  end
+
+  # GET
   def settings
     respond_to do |format|
       format.js
