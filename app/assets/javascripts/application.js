@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.browser
 //= require jquery.splitter
+//= require jquery.remotipart
 //= require bootstrap-transition
 //= require bootstrap-dropdown
 //= require bootstrap-tooltip

@@ -1,5 +1,8 @@
 <% if @stream_with_error.present? %>
-	$.notify('error', 'error occured while importing OPML')
+	$.notify('error occured while importing OPML', 'error')
 <% else %>
-	$.notify('success', 'OPML successfully imported ! Yay !')
+	var html = "<%= escape_javascript(
+		render('home/streams', :collection => @streams)) %>"
+	$("#streams_list").html(html)
+	$.notify('OPML successfully imported!', 'success')
 <% end %>
