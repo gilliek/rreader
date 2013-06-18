@@ -18,17 +18,6 @@
 //= require jquery.splitter
 //= require fartscroll
 //= require_tree .
-//= require jquery.ui.core
-//= require jquery.ui.widget
-//= require jquery.ui.mouse
-//= require jquery.ui.position
-//= require jquery.ui.core
-//= require jquery.ui.widget
-//= require jquery.ui.mouse
-//= require jquery.ui.position
-//= require jquery.ui.dialog
-//= require jquery.ui.tooltip
-//= require jquery.ui.menu
 
 var entries_selected = false;
 var notif_activated = false;
@@ -71,8 +60,7 @@ $(function() {
   });
 
   $("#panel_splitter").splitter();
-  $(document).tooltip({ track: true });
-  //$(document).tooltip();
+  $(document).tooltip();
 
   $.star_item = function() {
     $('#entries-form').attr('action', '/feed_entries_actions/star_items');

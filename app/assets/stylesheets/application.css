@@ -13,15 +13,9 @@
  */
 
 /*
- *= require jquery.ui.core
- *= require jquery.ui.theme
- *= require jquery.ui.resizable
- *= require jquery.ui.selectable
- *= require jquery.ui.dialog
- *= require jquery.ui.accordion
- *= require jquery.ui.tooltip
- *= require font-awesome
+ *= require bootstrap
  *= require bootstrap-fileupload
+ *= require font-awesome
  */
 
 body {

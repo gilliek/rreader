@@ -9,9 +9,6 @@ gem 'sqlite3'
 
 gem 'haml-rails'
 
-# https://github.com/joliss/jquery-ui-rails
-gem 'jquery-ui-rails'
-
 # https://github.com/pauldix/feedzirra
 # http://railscasts.com/episodes/168-feed-parsing
 gem 'feedzirra'
