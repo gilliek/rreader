@@ -9,22 +9,6 @@
 
     = javascript_include_tag "application"
     = csrf_meta_tags
-    :javascript
-      $(function() {
-        $("#new_subscription").dialog({
-            autoOpen: false,
-            height: 220,
-            width: 280,
-            modal: true
-        });
-
-        $("#edit_subscription").dialog({
-            autoOpen: false,
-            height: 220,
-            width: 280,
-            modal: true
-        });
-      });
     :css
       #sidepanel .nav-list > .active > a, #sidepanel .nav-list > .active > a:hover {
         color: rgb(255, 255, 255);

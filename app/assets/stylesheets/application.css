@@ -219,6 +219,14 @@ div[class="tooltip-inner"] {
   border-bottom-color: black;
 }
 
+/* disable user selection */
+ul.nav li {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 /* helpers */
 .center      { text-align: center; }
 .bold        { font-weight: bold   }

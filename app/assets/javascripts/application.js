@@ -14,14 +14,15 @@
 //= require jquery_ujs
 //= require jquery.browser
 //= require jquery.splitter
-//= require fartscroll
-//= require_tree .
-//= require bootstrap-button
+//= require bootstrap-transition
 //= require bootstrap-dropdown
 //= require bootstrap-tooltip
 //= require bootstrap-tooltip-extension
 //= require bootstrap-popover
+//= require bootstrap-button
 //= require bootstrap-fileupload
+//= require fartscroll
+//= require_tree .
 
 var entries_selected = false;
 var notif_activated = false;
@@ -54,9 +55,6 @@ $(function() {
 
   $(window).resize(auto_resize);
 
-  // avoid display problem after clicking on a navigation item
-  $("ul.nav li").disableSelection();
-
   // change the active item of the navigation menu
   $("ul.nav li a").click(function() {
     $(".nav li").removeClass("active");
@@ -64,7 +62,6 @@ $(function() {
   });
 
   $("#panel_splitter").splitter();
-  $(document).tooltip();
 
   $.star_item = function() {
     $('#entries-form').attr('action', '/feed_entries_actions/star_items');
