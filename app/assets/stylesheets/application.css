@@ -150,7 +150,7 @@ body {
 
 /* trick to make overflow hidden property work on a <a> into a <td> */
 table#entries {
-    width: 100%;
+    width: 99%;
     table-layout: fixed;
 }
 table#entries td {
