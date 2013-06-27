@@ -99,7 +99,7 @@ body {
   border-left:5px solid gray;
   overflow: auto;
   padding: 10px;
-  position: relative;
+  margin-left: 20px;
 }
 
 #preview h3 {
