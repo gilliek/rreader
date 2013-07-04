@@ -103,7 +103,7 @@ body {
 }
 
 #preview h3 {
-  float: left
+  float: left;
   margin-top: 20px;
   margin-left: 6px;
 }
