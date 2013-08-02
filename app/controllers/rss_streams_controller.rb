@@ -55,6 +55,7 @@ class RssStreamsController < ApplicationController
 
     respond_to do |format|
       if @rss_stream.save
+        @rss_stream.load_feed_entries
         @streams = RssStream.all_by_title(current_user.id)
         format.html
         format.json { render json: @rss_stream }

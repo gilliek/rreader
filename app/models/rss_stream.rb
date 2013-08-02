@@ -1,7 +1,6 @@
 class RssStream < ActiveRecord::Base
   attr_accessible :title, :url, :user_id
 
-  after_save :load_feed_entries
   before_save :handle_empty_title
 
   has_many :feed_entries, :dependent => :destroy
@@ -15,7 +14,7 @@ class RssStream < ActiveRecord::Base
 
   scope :all_by_title, lambda { |id| where(:user_id => id).order("UPPER(title) ASC") }
 
-  # loads all entries after the creation of the new RssStream
+  # loads all entrie
   def load_feed_entries
     last_entry = self.feed_entries.last
     if last_entry.nil?
