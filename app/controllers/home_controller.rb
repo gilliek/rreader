@@ -5,7 +5,7 @@ class HomeController < ApplicationController
                     .where(:user_id => current_user.id)
                     .map { |v| v[:url] }
 
-    RssStream.update_all_feeds(urls, current_user.id)
+    #RssStream.update_all_feeds(urls, current_user.id)
 
     @entries = FeedEntry.joins(:rss_stream)
                         .where("rss_streams.user_id = ? AND " +
