@@ -23,6 +23,7 @@
 //= require bootstrap-button
 //= require bootstrap-fileupload
 //= require fartscroll
+//= require perfect-scrollbar-0.4.3.with-mousewheel.min
 //= require_tree .
 
 var entries_selected = false;
@@ -60,6 +61,12 @@ $(function() {
   $("ul.nav li a").click(function() {
     $(".nav li").removeClass("active");
     $(this).parent().addClass("active");
+  });
+
+  // auto resize feeds list
+  $("#streams_list").css("height", ($(window).height() - 310) + "px");
+  $("#streams_list").perfectScrollbar({
+    wheelSpeed: 30
   });
 
   $("#panel_splitter").splitter();

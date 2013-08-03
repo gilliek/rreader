@@ -16,6 +16,7 @@
  *= require bootstrap
  *= require bootstrap-fileupload
  *= require font-awesome
+ *= require perfect-scrollbar-0.4.3.min
  */
 
 body {
@@ -130,7 +131,8 @@ body {
 }
 
 #entries-box {
-  overflow: auto;
+  overflow: hidden;
+  position: relative;
 }
 
 #entries tr td {
@@ -228,6 +230,11 @@ ul.nav li {
     -khtml-user-select: none;
     -webkit-user-select: none;
     user-select: none;
+}
+
+#streams_list {
+  overflow: hidden;
+  position: relative;
 }
 
 /* helpers */
