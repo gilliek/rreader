@@ -2,6 +2,7 @@ var html = "<%= escape_javascript(
   render(:partial => 'rss_streams/show')) %>"
 
 $("#content").html(html);
+$("#loading").css("visibility", "hidden");
 $("#panel_splitter").splitter();
 
 // add a preview icon into the preview area
