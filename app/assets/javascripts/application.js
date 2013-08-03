@@ -73,7 +73,7 @@ $(function() {
   });
 
   // auto resize feeds list
-  $("#streams_list").css("height", ($(window).height() - 310) + "px");
+  $("#streams_list").css("max-height", ($(window).height() - 310) + "px");
   $("#streams_list").perfectScrollbar({
     wheelSpeed: 30
   });
