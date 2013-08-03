@@ -42,6 +42,15 @@ function loadSpin() {
   $("#loading").css("visibility", "visible");
 }
 
+function feedLoader() {
+  // loading icon
+  $("#content").html('<div id="loading-feed">' +
+        '<i class="icon-spinner icon-spin icon-2x"></i>' +
+        '&nbsp; <span>Loading feed...</span>' +
+      '</div>');
+  $('#loading-feed').css('margin-top', ($('#content').height()/2 - 10) + 'px');
+}
+
 function loadInsideSpin(elmt) {
   $(elmt).children().removeClass('icon-ok');
   $(elmt).children().addClass('icon-spinner icon-spin');
