@@ -1,20 +1,21 @@
-%h3= @entry.name
-%p
-  %a{:href => @entry.url, :target => "_blank"} View original article
-/
-  <div class="btn-group open" id="item_options">
-  <a class="btn btn-primary" href="#"><i class="icon-user"></i> User</a>
-  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
-  <ul class="dropdown-menu">
-  <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-  <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-  <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
-  <li class="divider"></li>
-  <li><a href="#"><i class="i"></i> Make admin</a></li>
-  </ul>
-  </div>
-#preview_content
-  - if @entry.content.nil?
-    = @entry.summary.html_safe
-  - else
-    = @entry.content.html_safe
+#preview_container
+  %h3= @entry.name
+  %p
+    %a{:href => @entry.url, :target => "_blank"} View original article
+  /
+    <div class="btn-group open" id="item_options">
+    <a class="btn btn-primary" href="#"><i class="icon-user"></i> User</a>
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+    <ul class="dropdown-menu">
+    <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+    <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
+    <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
+    <li class="divider"></li>
+    <li><a href="#"><i class="i"></i> Make admin</a></li>
+    </ul>
+    </div>
+  #preview_content
+    - if @entry.content.nil?
+      = @entry.summary.html_safe
+    - else
+      = @entry.content.html_safe

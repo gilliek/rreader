@@ -11,9 +11,11 @@ $('#preview').html(
       <i class="icon-search icon-large"></i>\
     </div>');
 
+$('#preview').css('height', $('#panel_splitter').height() + 'px');
+
 // center vertically the preview icon box
 $('#preview-icon-box').css('margin-top',
-                            ($('#preview').height()/2) - 42 + 'px');
+  ($('#preview').height()/2) - 42 + 'px');
 
 // trick to close the dropdown menu
 $('#toggle-link').click();

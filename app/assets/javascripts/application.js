@@ -34,7 +34,7 @@ var new_subscription_lock = false;
 var edit_subscription_lock = false;
 
 function auto_resize() {
-  $("#content").css("width", ($(window).width() - 310) + "px");
+  $("#content").css("width", ($(window).width() - 340) + "px");
   $("#content").css("height", ($(window).height() - 80) + "px");
 }
 

@@ -1,3 +1,12 @@
 var html = "<%= escape_javascript(
       render(:partial => 'feed_entries/show')) %>"
 $("#preview").html(html)
+
+$('#preview_container').css('height',
+    ($('#preview').height()) + 'px');
+
+// add custom scrollbar
+$('#preview_container').perfectScrollbar({
+  wheelSpeed: 30,
+  minScrollbarLength: 15
+});
